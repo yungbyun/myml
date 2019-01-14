@@ -32,13 +32,14 @@ warnings.filterwarnings('ignore')
 #print(train['Survived'] == 1)
 #print(train[train['Survived'] == 1])
 #print(train[train['Embarked'] == 'C'])
+#print(train[train['Survived'] == 1]['Sex'])
+#print(train[train['Survived'] == 0]['Sex'])
 
 # 생존자의 남여 수, 사망자의 남여 수 표시
 survived = train[train['Survived'] == 1]['Sex'].value_counts()
 dead = train[train['Survived'] == 0]['Sex'].value_counts()
-df = pd.DataFrame([survived, dead])
-df.index = ['Survived', 'Dead']
-df.plot(kind='bar', stacked=True, figsize=(15, 10))
-#plt.show()
-
+dframe  = pd.DataFrame([survived, dead])
+dframe.index = ['Survived', 'Dead']
+dframe.plot(kind='bar', stacked=True, figsize=(15, 10))
+plt.show()
 
