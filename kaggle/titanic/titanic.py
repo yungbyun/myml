@@ -1,9 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-import seaborn as sns
-plt.style.use('seaborn-dark')
-sns.set(font_scale=1.5)
+
 
 import missingno as msno
 import warnings
@@ -101,13 +99,26 @@ dframe.index = ['Survived', 'Dead']
 #dframe.plot(kind='bar', stacked=True, figsize=(15, 10))
 #plt.show()
 
-# 승선지에 따른 생존자 수, 승선지에 따른 사망자 수 표시
-sex_servived = train[train['Survived'] == 1]['Embarked']
-cnt_survived = sex_servived.value_counts()
-sex_dead = train[train['Survived'] == 0]['Embarked']
-cnt_dead = sex_dead.value_counts()
-dframe = pd.DataFrame([cnt_survived, cnt_dead])
-dframe.index = ['Survived', 'Dead']
-#dframe.plot(kind='bar', stacked=True, figsize=(15, 10))
+import seaborn as sns
+
+plt.style.use('seaborn-dark')
+sns.set(font_scale=1)
+selected_column = train[train['Survived'] == 0]['Sex']
+count = selected_column.value_counts()
+dframe = pd.DataFrame([count])
+dframe.index = ['Dead']
+#dframe.plot(kind='bar', stacked=False, figsize=(4, 8))
 #plt.show()
+
+def xxx(field1, val, field2, x_title):
+    plt.style.use('seaborn-dark')
+    selected_column = train[train[field1] == val][field2]
+    count = selected_column.value_counts()
+    dframe = pd.DataFrame([count])
+    dframe.index = [x_title]
+    dframe.plot(rot=0, kind='bar', title='', stacked=False, figsize=(4, 8), fontsize=12)
+    plt.show()
+
+xxx('Parch', 1, 'Embarked', 'Parch: 1')
+
 
