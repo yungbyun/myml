@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/kaggle/titanic/titanic.py" line="51" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="7956d31c-0139-4ca0-972d-8b302573fcfd" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +13,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kaggle/titanic/titanic.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="192">
               <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+=======
+            <state relative-caret-position="564">
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
+>>>>>>> 3b26f056520c44c1f90716ba6629a72fac0551e7
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -48,9 +50,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="303" />
-    <option name="width" value="1554" />
-    <option name="height" value="1088" />
+    <option name="x" value="195" />
+    <option name="y" value="6" />
+    <option name="width" value="1555" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -83,6 +86,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Kaggle/kaggle-titanic-master" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
@@ -161,15 +165,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="303" y="0" width="1554" height="1088" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19459103" />
+=======
+    <frame x="156" y="5" width="1244" height="872" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1938691" />
+>>>>>>> 3b26f056520c44c1f90716ba6629a72fac0551e7
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.43815514" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" weight="0.43766937" />
+>>>>>>> 3b26f056520c44c1f90716ba6629a72fac0551e7
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -184,17 +198,27 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pandas/core/indexes/base.py">
+=======
+    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pandas/core/indexes/base.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas/core/indexes/base.py">
+>>>>>>> 3b26f056520c44c1f90716ba6629a72fac0551e7
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="3087" column="18" lean-forward="true" selection-start-line="3087" selection-start-column="18" selection-end-line="3087" selection-end-column="18" />
+        <state relative-caret-position="352">
+          <caret line="3090" column="11" lean-forward="true" selection-start-line="3090" selection-start-column="11" selection-end-line="3090" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kaggle/titanic/titanic.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="192">
           <caret line="105" column="16" lean-forward="true" selection-start-line="105" selection-start-column="16" selection-end-line="105" selection-end-column="16" />
+=======
+        <state relative-caret-position="564">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
+>>>>>>> 3b26f056520c44c1f90716ba6629a72fac0551e7
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
