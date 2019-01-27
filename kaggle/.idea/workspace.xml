@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7956d31c-0139-4ca0-972d-8b302573fcfd" name="Default Changelist" comment="" />
+    <list default="true" id="c54617ef-155b-404e-9574-786d584f3964" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/Yung_Byun.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/kaggle.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/titanic/titanic.py" beforeDir="false" afterPath="$PROJECT_DIR$/titanic/titanic.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,10 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kaggle/titanic/titanic.py">
+        <entry file="file://$PROJECT_DIR$/titanic/titanic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
+            <state relative-caret-position="494">
+              <caret line="222" column="1" lean-forward="true" selection-start-line="222" selection-start-column="1" selection-end-line="222" selection-end-column="37" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -22,34 +33,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/numpy/example1.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="903">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/numpy/example1.py" />
-        <option value="$PROJECT_DIR$/kaggle/titanic/titanic.py" />
+        <option value="$PROJECT_DIR$/titanic/titanic.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="195" />
+    <option name="x" value="171" />
     <option name="y" value="6" />
-    <option name="width" value="1555" />
-    <option name="height" value="1090" />
+    <option name="width" value="1410" />
+    <option name="height" value="1048" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -59,17 +61,11 @@
         <subPane>
           <expand>
             <path>
-              <item name="myml" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myml" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myml" type="462c0819:PsiDirectoryNode" />
+              <item name="kaggle" type="b2602c69:ProjectViewProjectNode" />
               <item name="kaggle" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="myml" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myml" type="462c0819:PsiDirectoryNode" />
+              <item name="kaggle" type="b2602c69:ProjectViewProjectNode" />
               <item name="kaggle" type="462c0819:PsiDirectoryNode" />
               <item name="titanic" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -81,7 +77,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Kaggle/kaggle-titanic-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
@@ -96,41 +92,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.titanic">
-    <configuration name="example1" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="myml" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/numpy" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/numpy/example1.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="titanic" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="myml" />
+      <module name="kaggle" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/kaggle/titanic" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/titanic" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kaggle/titanic/titanic.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/titanic/titanic.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -142,32 +117,32 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.titanic" />
-        <item itemvalue="Python.example1" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="1" BundledDictionary0="english.dic" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="project-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="7956d31c-0139-4ca0-972d-8b302573fcfd" name="Default Changelist" comment="" />
-      <created>1547871523663</created>
+      <changelist id="c54617ef-155b-404e-9574-786d584f3964" name="Default Changelist" comment="" />
+      <created>1548372473569</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1547871523663</updated>
+      <updated>1548372473569</updated>
     </task>
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="156" y="5" width="1244" height="872" extended-state="0" />
+    <frame x="137" y="5" width="1128" height="838" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1938691" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19248396" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.43766937" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42978725" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -182,28 +157,20 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python36/site-packages/pandas/core/indexes/base.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas/core/indexes/base.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas/core/dtypes/cast.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="3090" column="11" lean-forward="true" selection-start-line="3090" selection-start-column="11" selection-end-line="3090" selection-end-column="11" />
+        <state relative-caret-position="108">
+          <caret line="729" selection-start-line="729" selection-end-line="729" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kaggle/titanic/titanic.py">
+    <entry file="file://$PROJECT_DIR$/titanic/titanic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="124" selection-start-line="124" selection-end-line="124" />
+        <state relative-caret-position="494">
+          <caret line="222" column="1" lean-forward="true" selection-start-line="222" selection-start-column="1" selection-end-line="222" selection-end-column="37" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/numpy/example1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="43" selection-start-line="43" selection-end-line="43" />
         </state>
       </provider>
     </entry>
