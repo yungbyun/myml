@@ -5,12 +5,15 @@ import missingno as msno
 import warnings
 warnings.filterwarnings('ignore')
 
+pd.set_option('display.max_row', 1000)
+pd.set_option('display.max_columns', 20)
+
 # ---------------
 # 데이터 로드하기
 # ---------------
 train = pd.read_csv('input/train.csv')
 test = pd.read_csv('input/test.csv')
-
+print(test)
 # ---------------
 # 데이터 정보
 # ---------------
@@ -195,14 +198,14 @@ test["Age"].fillna(median_test, inplace=True)
 
 #print(train['Age'].head(10))
 
-# 나이에 따른 생존자/사망자의 분포
+# 생존자/사망자별 나이 분포
 #facet = sns.FacetGrid(train, hue="Survived", aspect=2.5)
 #facet.map(sns.kdeplot, 'Age', shade=True)
 #facet.set(xlim=(0, train['Age'].max()))
 #facet.add_legend()
 #plt.show()
 
-# 나이에 따른 탑승장소 분포
+# 탑승 장소별 나이 분포
 #facet = sns.FacetGrid(train, hue="Embarked", aspect=2.5)
 #facet.map(sns.kdeplot, 'Age', shade=True)
 #facet.set(xlim=(0, train['Age'].max()))
@@ -220,4 +223,247 @@ for dataset in all_data:
     dataset.loc[(dataset['Age'] > 36) & (dataset['Age'] <= 62), 'Age'] = 3,
     dataset.loc[ dataset['Age'] > 62, 'Age'] = 4
 
-show_sd_fig('Age', 'Figure for Age')
+#print(train['Age'].head())
+
+#show_sd_fig('Age', 'Figure for Age')
+
+#print(train['Embarked'].value_counts())
+#print(train['Embarked'].unique())
+
+#print(train)
+
+# 학습 데이터에서
+def show_pclass_fig(col, msg):
+    # 티켓 클래스별 ??? 구성 표시
+    col1 = train[train['Pclass'] == 1][col]
+    cnt1 = col1.value_counts()
+
+    col2 = train[train['Pclass'] == 2][col]
+    cnt2 = col2.value_counts()
+
+    col3 = train[train['Pclass'] == 3][col]
+    cnt3 = col3.value_counts()
+
+    dataframe = pd.DataFrame([cnt1, cnt2, cnt3])
+    dataframe.index = ['1st class', '2nd class', '3rd class']
+    dataframe.plot(rot=0, kind='bar', title=msg, stacked=True,
+                figsize=(5, 8), fontsize=12)
+    plt.show()
+
+#show_pclass_fig('Embarked', 'Figure for Embarked')
+
+
+#print(train['Embarked'].unique())
+#print(train['Embarked'].value_counts())
+
+for dataset in all_data:
+    dataset['Embarked'] = dataset['Embarked'].fillna('S')
+
+#print(train['Embarked'].unique())
+#print(train['Embarked'].value_counts())
+
+#print(test['Fare'])
+
+embarked_mapping = {"S": 0, "C": 1, "Q": 2}
+for dataset in all_data:
+    dataset['Embarked'] = dataset['Embarked'].map(embarked_mapping)
+
+#print(train['Embarked'].value_counts())
+
+# 좌석 등급(Pclass)이 같은  요금(Fare)들의 중간값으로 빈 요금을 채우라.
+train["Fare"].fillna(train.groupby("Pclass")["Fare"].transform("median"), inplace=True)
+test["Fare"].fillna(test.groupby("Pclass")["Fare"].transform("median"), inplace=True)
+
+
+# 비어있는 요금, 좌석 등급(Pclass)이 같은 요금(Fare) 중간값으로
+def fill_median(col1, col2):
+    train[col1].fillna(train.groupby(col2)[col1].transform("median"), inplace=True)
+    test[col1].fillna(test.groupby(col2)[col1].transform("median"), inplace=True)
+
+fill_median('Fare', 'Pclass')
+
+
+# 탑승 장소별 나이 분포
+#facet = sns.FacetGrid(train, hue="Embarked", aspect=2.5)
+#facet.map(sns.kdeplot, 'Age', shade=True)
+#facet.set(xlim=(0, train['Age'].max()))
+#facet.add_legend()
+#plt.xlim(0, 20)
+#plt.show()
+
+# 생존자/사망자별 요금 분포
+#facet = sns.FacetGrid(train, hue="Survived", aspect=4)
+#facet.map(sns.kdeplot, 'Fare', shade=True)
+#facet.set(xlim=(0, train['Fare'].max()))
+#facet.add_legend()
+#plt.show()
+
+
+# 탑승 장소별 요금 분포
+#facet = sns.FacetGrid(train, hue="Embarked", aspect=4)
+#facet.map(sns.kdeplot, 'Fare', shade=True)
+#facet.set(xlim=(0, train['Fare'].max()))
+#facet.add_legend()
+#plt.xlim(0, 200)
+#plt.show()
+
+
+def show_fare_dist(col):
+    facet = sns.FacetGrid(train, hue=col, aspect=4)
+    facet.map(sns.kdeplot, 'Fare', shade=True)
+    facet.set(xlim=(0, train['Fare'].max()))
+    facet.add_legend()
+#    plt.xlim(0, 200)
+    plt.show()
+
+#show_fare_dist('Embarked')
+#show_fare_dist('Sex')
+#show_fare_dist('Age')
+#show_fare_dist('Pclass')
+
+#print(train['Fare'].head())
+
+# 요금 구간 정보로 바꾸기
+for dataset in all_data:
+    dataset.loc[ dataset['Fare'] <= 17, 'Fare'] = 0,
+    dataset.loc[(dataset['Fare'] > 17) & (dataset['Fare'] <= 30), 'Fare'] = 1,
+    dataset.loc[(dataset['Fare'] > 30) & (dataset['Fare'] <= 100), 'Fare'] = 2,
+    dataset.loc[ dataset['Fare'] > 100, 'Fare'] = 3
+
+#print(train['Fare'].head())
+
+#show_fare_dist('Pclass')
+
+
+#print(train['Cabin'].value_counts())
+#print(train.Cabin)
+
+for dataset in all_data:
+    dataset['Cabin'] = dataset['Cabin'].str[:1]
+
+#print(train['Cabin'].value_counts())
+
+#show_pclass_fig('Cabin', 'Figure for Cabin')
+
+
+#show_pclass_fig('Fare', 'Figure for Fare')
+
+#print(train['Cabin'].head())
+
+cabin_mapping = {"A": 0, "B": 0.4, "C": 0.8, "D": 1.2, "E": 1.6, "F": 2, "G": 2.4, "T": 2.8}
+for dataset in all_data:
+    dataset['Cabin'] = dataset['Cabin'].map(cabin_mapping)
+
+#print(train['Cabin'].head())
+
+train["Cabin"].fillna(train.groupby("Pclass")["Cabin"].transform("median"), inplace=True)
+test["Cabin"].fillna(test.groupby("Pclass")["Cabin"].transform("median"), inplace=True)
+
+#print(train['Cabin'].head(10))
+
+#show_pclass_fig('Cabin', 'Figure for Cabin')
+#show_sd_fig('Cabin', 'Figure for Cabin')
+
+train["FamilySize"] = train["SibSp"] + train["Parch"] + 1
+test["FamilySize"] = test["SibSp"] + test["Parch"] + 1
+print(test.head(10))
+
+features_drop = ['Ticket', 'SibSp', 'Parch']
+train = train.drop(features_drop, axis=1)
+test = test.drop(features_drop, axis=1)
+train = train.drop(['PassengerId'], axis=1)
+#test = test.drop(['PassengerId'], axis=1)
+#print(train.head(10))
+#print(test.head(10))
+
+train_input = train.drop('Survived', axis=1)
+labels = train['Survived']
+
+#print(train_input.shape, labels.shape)
+
+
+# ======================================
+
+# Importing Classifier Modules
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+
+import numpy as np
+
+#print(train.info())
+
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+k_fold = KFold(n_splits=10, shuffle=True, random_state=0)
+
+clf = KNeighborsClassifier(n_neighbors = 13)
+scoring = 'accuracy'
+score = cross_val_score(clf, train_input, labels, cv=k_fold, n_jobs=1, scoring=scoring)
+#rint(score)
+#print(round(np.mean(score)*100, 2))
+
+clf = DecisionTreeClassifier()
+scoring = 'accuracy'
+score = cross_val_score(clf, train_input, labels, cv=k_fold, n_jobs=1, scoring=scoring)
+#print(score)
+#print(round(np.mean(score)*100, 2))
+
+clf = RandomForestClassifier(n_estimators=13)
+scoring = 'accuracy'
+score = cross_val_score(clf, train_input, labels, cv=k_fold, n_jobs=1, scoring=scoring)
+#print(score)
+#print(round(np.mean(score)*100, 2))
+
+clf = GaussianNB()
+scoring = 'accuracy'
+score = cross_val_score(clf, train_input, labels, cv=k_fold, n_jobs=1, scoring=scoring)
+#print(score)
+#print(round(np.mean(score)*100, 2))
+
+clf = SVC()
+scoring = 'accuracy'
+score = cross_val_score(clf, train_input, labels, cv=k_fold, n_jobs=1, scoring=scoring)
+#print(score)
+#print(round(np.mean(score)*100, 2))
+
+
+# ========================== Test
+
+
+# 학습 데이터와 레이블로 학습하고 테스트 데이터로 테스트를 수행하여 결과를 반환함.
+
+def learn_test(clf, train_input, labels, test_input):
+    clf.fit(train_input, labels)
+    pred = clf.predict(test_input)
+    return pred
+
+test_input = test.drop("PassengerId", axis=1).copy()
+prediction = learn_test(SVC(), train_input, labels, test_input)
+
+# 제출할 파일을 만든고 이를 화면에 표시함.
+df = pd.DataFrame({
+        "PassengerId": test["PassengerId"],
+        "Survived": prediction
+    })
+
+def save_display(df, fname):
+    df.to_csv(fname, index=False)
+
+    submission = pd.read_csv(fname)
+    print(submission.head())
+
+save_display(df, 'submission.csv')
+
+
+
+'''
+   PassengerId  Survived
+0          892         0
+1          893         1
+2          894         0
+3          895         0
+4          896         1
+'''
