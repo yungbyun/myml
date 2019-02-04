@@ -11,44 +11,59 @@ from mpl_toolkits.mplot3d import Axes3D
 
 pd.set_option('display.max_columns', 20)
 
-evaluation = pd.DataFrame({'Model': [],
-                           'Details':[],
-                           'Mean Squared Error (MSE)':[],
-                           'R-squared (training)':[],
-                           'Adjusted R-squared (training)':[],
-                           'R-squared (test)':[],
-                           'Adjusted R-squared (test)':[]})
-
 df = pd.read_csv('input/kc_house_data.csv')
 #df.describe()
 #df.info()
-#print(df.head(10))
+#cols = ['bedrooms', 'sqft_living', 'price']
+#print(df[cols].head(10))
 
 def adjustedR2(r2,n,k):
     return r2-(k-1)/(n-k)*(1-r2)
 
+
+# 첫번째 예측
 train_data,test_data = train_test_split(df,train_size = 0.8,random_state=3)
 
 lr = linear_model.LinearRegression()
+#print(np.array(train_data['sqft_living'], dtype=pd.Series).reshape(-1,1))
 X_train = np.array(train_data['sqft_living'], dtype=pd.Series).reshape(-1,1)
+
 y_train = np.array(train_data['price'], dtype=pd.Series)
+#print(y_train)
+
 lr.fit(X_train,y_train)
 
 X_test = np.array(test_data['sqft_living'], dtype=pd.Series).reshape(-1,1)
+#print(X_test)
 y_test = np.array(test_data['price'], dtype=pd.Series)
+#print(y_test)
 
 pred = lr.predict(X_test)
 msesm = format(np.sqrt(metrics.mean_squared_error(y_test,pred)),'.3f')
 rtrsm = format(lr.score(X_train, y_train),'.3f')
 rtesm = format(lr.score(X_test, y_test),'.3f')
 
+#print(pred)
 #print ("Average Price for Test Data: {:.3f}".format(y_test.mean()))
+#print ("Average Price for predicted: {:.3f}".format(pred.mean()))
+
 #print('Intercept: {}'.format(lr.intercept_))
 #print('Coefficient: {}'.format(lr.coef_))
 
+evaluation = pd.DataFrame(
+    {'Model': [],
+    'Details':[],
+    'Mean Squared Error (MSE)':[],
+    'R-squared (training)':[],
+    'Adjusted R-squared (training)':[],
+    'R-squared (test)':[],
+    'Adjusted R-squared (test)':[]})
+
 r = evaluation.shape[0]
+#print(r)
 evaluation.loc[r] = ['Simple Model','-',msesm,rtrsm,'-',rtesm,'-']
 #print(evaluation)
+
 
 '''
 plt.figure(figsize=(7, 6))
@@ -64,8 +79,10 @@ plt.gca().spines['right'].set_visible(False)
 plt.gca().spines['top'].set_visible(False)
 plt.show()
 '''
-'''
+
 sns.set(style="white", font_scale=1)
+
+
 
 features = ['price','bedrooms','bathrooms','sqft_living','sqft_lot','floors',
             'waterfront','view','condition','grade','sqft_above','sqft_basement',
@@ -79,7 +96,7 @@ plt.title('Pearson Correlation Matrix',fontsize=25)
 sns.heatmap(df[features].corr(),linewidths=0.25,vmax=1.0,square=True,cmap="BuGn_r",
             linecolor='w',annot=True,mask=mask,cbar_kws={"shrink": .75});
 plt.show()
-'''
+
 '''
 f, axes = plt.subplots(1, 2,figsize=(15,5))
 sns.boxplot(x=train_data['bedrooms'],y=train_data['price'], ax=axes[0])
@@ -134,9 +151,10 @@ artecm1 = format(adjustedR2(complex_model_1.score(test_data[features1],test_data
 
 r = evaluation.shape[0]
 evaluation.loc[r] = ['Complex Model-1','-',msecm1,rtrcm1,artrcm1,rtecm1,artecm1]
-print(evaluation.sort_values(by = 'R-squared (test)', ascending=False))
+#print(evaluation.sort_values(by = 'R-squared (test)', ascending=False))
 
 
+'''
 f, axes = plt.subplots(1, 2,figsize=(15,5))
 sns.boxplot(x=train_data['waterfront'],y=train_data['price'], ax=axes[0])
 sns.boxplot(x=train_data['view'],y=train_data['price'], ax=axes[1])
@@ -149,7 +167,7 @@ f, axe = plt.subplots(1, 1,figsize=(12.18,5))
 sns.boxplot(x=train_data['grade'],y=train_data['price'], ax=axe)
 axe.set(xlabel='Grade', ylabel='Price');
 plt.show()
-
+'''
 '''
 fig=plt.figure(figsize=(9.5,6.25))
 ax=fig.add_subplot(1,1,1, projection="3d")
