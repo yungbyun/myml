@@ -189,10 +189,91 @@ df = pd.DataFrame({'A': ['one', 'one', 'two', 'three'] * 3,
 pt = pd.pivot_table(df, values='D', index=['A', 'B'], columns=['C'])
 #print(pt)
 
+#간격을 초로
 rng = pd.date_range('20190101', periods=100, freq='S')
-print(rng)
+#print(rng)
 
 ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
-print(ts)
+#print(ts)
+rs = ts.resample('5Min').sum()
+
+#간격을 날짜로
+rng = pd.date_range('1/1/2019 00:00', periods=10, freq='D')
+ts = pd.Series(np.random.randn(len(rng)), rng)
+#print(ts)
+
+rng = pd.date_range('1/1/2019 00:00', periods=5, freq='D')
+ts = pd.Series(np.random.randn(len(rng)), rng)
+
+ts_utc = ts.tz_localize('UTC')
+
+a = ts_utc.tz_convert('US/Eastern')
+#print(a)
+
+rng = pd.date_range('20190101', periods=5, freq='M')
+#print(rng)
 
 
+ts = pd.Series(np.random.randn(len(rng)), index=rng)
+#print(ts)
+
+ps = ts.to_period()
+#print(ps)
+a = ps.to_timestamp()
+#print(a)
+
+
+df = pd.DataFrame({"id": [1, 2, 3, 4, 5, 6],
+    "raw_grade": ['a', 'b', 'b', 'a', 'a', 'e']})
+df["grade"] = df["raw_grade"].astype("category")
+#print(df)
+
+a = df["grade"].cat.categories = ["very good", "good", "very bad"]
+#print(a)
+
+a = df.sort_values(by="grade")
+#print(a)
+
+a = df.groupby("grade").size()
+#print(a)
+
+import matplotlib.pyplot as plt
+
+ts = pd.Series(
+    np.random.randn(1000),
+    index=pd.date_range('1/1/2019', periods=1000))
+ts = ts.cumsum()
+ts.plot(figsize=(15, 5))
+#plt.show()
+
+df = pd.DataFrame(
+    np.random.randn(1000, 4), index=ts.index,
+    columns=['A', 'B', 'C', 'D'])
+df = df.cumsum()
+df.plot(figsize=(15, 5))
+plt.legend(loc='best')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+'''
+
+df.to_csv('foo.csv')
+a = pd.read_csv('foo.csv')
+#print(a)
+
+df.to_hdf('foo.h5', 'df')
+a = pd.read_hdf('foo.h5', 'df')
+
+df.to_excel('foo.xlsx', sheet_name='Sheet1')
+a = pd.read_excel('foo.xlsx', 'Sheet1', index_col=None, na_values=['NA'])
+#print(a)
+'''
