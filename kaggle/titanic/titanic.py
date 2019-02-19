@@ -13,6 +13,7 @@ pd.set_option('display.max_columns', 20)
 # ---------------
 train = pd.read_csv('input/train.csv')
 test = pd.read_csv('input/test.csv')
+
 print(test)
 print(test.isnull().sum() / test.shape[0])
 
