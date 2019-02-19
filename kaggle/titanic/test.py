@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 pd.set_option('display.max_row', 1000)
-pd.set_option('display.max_columns', 20)
+pd.set_option('display.max_columns', 30)
 
 train = pd.read_csv('input/train.csv')
 test = pd.read_csv('input/test.csv')
@@ -92,6 +92,21 @@ train['Title'].replace(['Mlle','Mme','Ms','Dr','Major','Lady','Countess','Jonkhe
 test['Title'].replace(['Mlle','Mme','Ms','Dr','Major','Lady','Countess','Jonkheer','Col','Rev','Capt','Sir','Don', 'Dona'],
     ['Miss','Miss','Miss','Mr','Mr','Mrs','Mrs','Other','Other','Other','Mr','Mr','Mr', 'Mr'], inplace=True)
 
+a = train.groupby('Title').mean()
+print(a['Age'])
+
+train.loc[(train.Age.isnull())&(train.Title=='Mr'),'Age'] = 33
+train.loc[(train.Age.isnull())&(train.Title=='Mrs'),'Age'] = 36
+train.loc[(train.Age.isnull())&(train.Title=='Master'),'Age'] = 5
+train.loc[(train.Age.isnull())&(train.Title=='Miss'),'Age'] = 22
+train.loc[(train.Age.isnull())&(train.Title=='Other'),'Age'] = 46
+
+test.loc[(test.Age.isnull())&(test.Title=='Mr'),'Age'] = 33
+test.loc[(test.Age.isnull())&(test.Title=='Mrs'),'Age'] = 36
+test.loc[(test.Age.isnull())&(test.Title=='Master'),'Age'] = 5
+test.loc[(test.Age.isnull())&(test.Title=='Miss'),'Age'] = 22
+test.loc[(test.Age.isnull())&(test.Title=='Other'),'Age'] = 46
+
 train['Title'] = train['Title'].map({'Master': 0, 'Miss': 1, 'Mr': 2, 'Mrs': 3, 'Other': 4})
 test['Title'] = test['Title'].map({'Master': 0, 'Miss': 1, 'Mr': 2, 'Mrs': 3, 'Other': 4})
 
@@ -127,6 +142,8 @@ test = pd.get_dummies(test, columns=['Title'], prefix='Title')
 
 train = pd.get_dummies(train, columns=['Embarked'], prefix='Embarked')
 test = pd.get_dummies(test, columns=['Embarked'], prefix='Embarked')
+
+print(train.head(5))
 
 train.drop(['PassengerId', 'Name', 'SibSp', 'Parch', 'Ticket', 'Cabin'], axis=1, inplace=True)
 test.drop(['PassengerId', 'Name', 'SibSp', 'Parch', 'Ticket', 'Cabin'], axis=1, inplace=True)
@@ -227,17 +244,17 @@ plt.show()
 '''
 
 submission = pd.read_csv('input/gender_submission.csv')
-print(submission.head(10))
+#print(submission.head(10))
 
 prediction = nn_model.predict(X_test)
 prediction = prediction > 0.5
 prediction = prediction.astype(np.int)
 prediction = prediction.T[0]
-print(prediction)
-print(prediction.shape)
+#print(prediction)
+#print(prediction.shape)
 
 submission['Survived'] = prediction
-print(submission.head(10))
+#print(submission.head(10))
 submission.to_csv('input/my_nn_submission.csv', index=False)
 
 
