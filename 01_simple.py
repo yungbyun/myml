@@ -1,5 +1,7 @@
 # (1)1-1/R
 import tensorflow as tf
+#import warnings
+#warnings.filterwarnings('ignore')
 
 x_data = [1]
 y_data = [1]
