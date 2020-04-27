@@ -1,40 +1,32 @@
+#%tensorflow_version 1.x
 # (1)1-1/R
 import tensorflow as tf
-#import warnings
-#warnings.filterwarnings('ignore')
 
-x_data = [1]
-y_data = [1]
+x = [1]
+y = [1]
 
-# ----- a neuron
-w = tf.Variable(tf.random_normal([1]))
-hypo = x_data * w
+w = tf.Variable (tf.random_normal([1]))
+hypo = w * x
+E = (hypo - y) ** 2
 
-# ----- learning
-cost = (hypo - y_data) ** 2
-train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
-
+train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(E)
 sess = tf.Session()
-sess.run(tf.global_variables_initializer())
+sess.run(tf.global_variables_initializer()) #𝑤값 초기화
 
-cost_list = []
-for i in range(1001):
-    if i % 100 == 0:
-        err_val = sess.run(cost)
-        print('w:', sess.run(w), 'cost:', err_val)
-        cost_list.append(err_val)
-    sess.run(train)
-
-# show an error graph
-import matplotlib.pyplot as plt
-plt.plot(cost_list)
-plt.xlabel('Epoch')
-plt.ylabel('Square Error')
-plt.show();
+err_list = []
+for i in range(101):
+    w_val = sess.run(w)
+    err = sess.run(E)
+    print(i, 'w:', w_val, 'cost:', err)
+    err_list.append(err)
+    sess.run(train) #한번 경사하강(w 업데이트)
 
 # ----- test(prediction)
 print(sess.run(w * [3, 4, 6, 9]))
 
-x_data = [3, 4, 6, 9]
-print(sess.run(hypo))
-
+# show an error graph
+import matplotlib.pyplot as plt
+plt.plot(err_list)
+plt.xlabel('Epoch')
+plt.ylabel('Squared Error')
+plt.show()
