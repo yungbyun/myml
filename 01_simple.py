@@ -6,8 +6,9 @@ x = [1]
 y = [1]
 
 w = tf.Variable (tf.random_normal([1]))
-hypo = w * x
-E = (hypo - y) ** 2
+h = w * x
+
+E = (h - y) ** 2
 
 train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(E)
 sess = tf.Session()
@@ -30,3 +31,4 @@ plt.plot(err_list)
 plt.xlabel('Epoch')
 plt.ylabel('Squared Error')
 plt.show()
+
