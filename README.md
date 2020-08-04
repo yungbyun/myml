@@ -9,5 +9,5 @@
 from google.colab import drive
 drive.mount('/gdrive')
 %cd /gdrive
-%cd /gdrive/My Drive/mldata
+%cd /gdrive/My Drive/xxx #xxx is your folder
 ```
