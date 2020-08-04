@@ -1,3 +1,5 @@
+#%tensorflow_version 1.x
+
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,9 +12,9 @@ def normalize(data):
 
 tf.set_random_seed(777)  # reproducibility
 
-timesteps = seq_length = 7
-data_dim = 5
-output_dim = 1
+timesteps = seq_length = 7 #윈도우 크기
+data_dim = 5 #Open, High, Low, Volume, Close 
+output_dim = 1 
 
 X = tf.placeholder(tf.float32, [None, seq_length, data_dim])  # [None, 7, 5]
 Y = tf.placeholder(tf.float32, [None, 1])
@@ -20,15 +22,16 @@ Y = tf.placeholder(tf.float32, [None, 1])
 # Neural Network Definition -------------------
 cell = tf.contrib.rnn.BasicLSTMCell(num_units=output_dim, state_is_tuple=True)  # 1차원 출력
 outputs, _states = tf.nn.dynamic_rnn(cell, X, dtype=tf.float32)  # 5차원 데이터가 7번 입력
-hypo = outputs[:, -1]  # 7번 입력하여 나온 7번 출력 중 가장 마지막 것을 신경망의 출력으로 사용
+hypo = outputs[:, -1]  # 7번 입력하여 나온 7번 출력 중 가장 마지막 것을 신경망의 출력(hypo)으로 사용
 # 7묶음 짜리 데이터가 모두 725개, 이만큼 hypo도 만들어짐.
 
-loss = tf.reduce_sum(tf.square(hypo - Y))  # cost/loss
+loss = tf.reduce_sum(tf.square(hypo - Y))  # cost/loss function
 train = tf.train.GradientDescentOptimizer(0.01).minimize(loss)
 
 # RMSE
 targets = tf.placeholder(tf.float32, [None, 1])
 predictions = tf.placeholder(tf.float32, [None, 1])
+
 rmse = tf.sqrt(tf.reduce_mean(tf.square(targets - predictions)))
 
 # Open, High, Low, Volume, Close
@@ -50,7 +53,7 @@ for i in range(0, number_of_label - seq_length): # 725(732 - 7)
     dataX.append(_x) # 725(732-7)개의 묶음들이  만들어져 들어감
     dataY.append(_y) # 7번 인덱스에 있는 y값부터 하나씩 꺼내어 구성함. 0~6번 인덱스꺼는 무시
 
-# Preparation of data: 70% for train, 30% for testing
+# 학습데이터 70%, 테스트 데이터 30%로 분할
 train_size = int(len(dataY) * 0.7)
 test_size = len(dataY) - train_size
 
@@ -63,9 +66,9 @@ testY = np.array(dataY[train_size:len(dataY)])
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
-for i in range(500):
-    sess.run(train, feed_dict={X: trainX, Y: trainY})
-    step_loss = sess.run(loss, feed_dict={X: trainX, Y: trainY})
+for i in range(500): 
+    sess.run(train, feed_dict={X: trainX, Y: trainY}) #학습, 경사하강
+    step_loss = sess.run(loss, feed_dict={X: trainX, Y: trainY}) #오류는 얼마인지 계산
 
     print(i, step_loss)
 
@@ -76,7 +79,7 @@ print("RMSE", sess.run(rmse, feed_dict={targets: testY, predictions: testPredict
 import matplotlib.pyplot as plt
 plt.plot(testY)
 plt.plot(testPredict)
-plt.xlabel("Time Period")
+plt.xlabel("Time Period"
 plt.ylabel("Stock Price")
 plt.show()
 
