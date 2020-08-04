@@ -79,7 +79,7 @@ print("RMSE", sess.run(rmse, feed_dict={targets: testY, predictions: testPredict
 import matplotlib.pyplot as plt
 plt.plot(testY)
 plt.plot(testPredict)
-plt.xlabel("Time Period"
+plt.xlabel("Time Period")
 plt.ylabel("Stock Price")
 plt.show()
 
