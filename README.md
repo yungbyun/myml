@@ -3,9 +3,9 @@
 %tensorflow_version 1.x
 
 ## To mount Google drive in Google Colab
-'''python
+```python
 from google.colab import drive
 drive.mount('/gdrive')
 %cd /gdrive
 %cd /gdrive/My Drive/mldata
-'''
+```
