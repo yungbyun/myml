@@ -14,9 +14,13 @@ W2 = tf.Variable(tf.random_normal([2, 2]))
 b2 = tf.Variable(tf.random_normal([2]))
 output2 = tf.sigmoid(tf.matmul(output1, W2) + b2)
 
-W3 = tf.Variable(tf.random_normal([2, 1]))
-b3 = tf.Variable(tf.random_normal([1]))
-hypo = tf.sigmoid(tf.matmul(output2, W3) + b3)
+W3 = tf.Variable(tf.random_normal([2, 2]))
+b3 = tf.Variable(tf.random_normal([2]))
+output3 = tf.sigmoid(tf.matmul(output2, W3) + b3)
+
+W4 = tf.Variable(tf.random_normal([2, 1]))
+b4 = tf.Variable(tf.random_normal([1]))
+hypo = tf.sigmoid(tf.matmul(output3, W4) + b4)
 
 #----- learning
 cost = -tf.reduce_mean(y_data * tf.log(hypo) + tf.subtract(1., y_data) * tf.log(tf.subtract(1., hypo)))
