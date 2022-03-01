@@ -1,7 +1,6 @@
 # (3)2-1/R
-import tensorflow as tf
-
-from myplot import MyPlot
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 x = [[1., 1], [2, 2], [3, 3], [4, 4]]
 y = [[1.], [2], [3], [4]]

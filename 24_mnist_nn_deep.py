@@ -1,7 +1,8 @@
 # Lab 10 MNIST and Deep learning
-import random
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
-import tensorflow as tf
+import random
 from tensorflow.examples.tutorials.mnist import input_data
 
 # import matplotlib.pyplot as plt

@@ -1,5 +1,6 @@
 # (4)2b-4S/C(4)
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 x_data = [[0., 0], [0, 1], [1, 0], [1, 1]]
 y_data = [[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]]

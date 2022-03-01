@@ -3,16 +3,10 @@ import matplotlib.pyplot as plot
 
 '''
 Usage:
-import myplot
-guy = myplot.MyPlot()
-guy.show_list(list)
-
 import numpy as np
-import myplot.py
-gildong = myplot.MyPlot()
+gildong = MyPlot()
 gildong.set_attribute('o-')
-gildong.show(np.arange(1, 5, 0.1))
-
+gildong.show_list(np.arange(1, 5, 0.1))
 '''
 
 
@@ -40,4 +34,10 @@ class MyPlot: # display using a graph
         plot.xlabel(self.x_label)
         plot.ylabel(self.y_label)
         plot.show()
+
+
+import numpy as np
+gildong = MyPlot()
+gildong.set_attribute('o-')
+gildong.show_list(np.arange(1, 5, 0.1))
 

@@ -1,5 +1,7 @@
 # Lab 10 MNIST and Xavier
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import random
 # import matplotlib.pyplot as plt
 

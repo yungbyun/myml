@@ -1,5 +1,7 @@
 # (N) 784-10S/C(10)
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import random
 from tensorflow.examples.tutorials.mnist import input_data
 

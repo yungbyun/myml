@@ -1,5 +1,7 @@
 # (4)2b-2-2-1/C(2)
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 tf.set_random_seed(777)  # for reproducibility
 
 x_data = [[0., 0], [0, 1], [1, 0], [1, 1]]

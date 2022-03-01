@@ -1,6 +1,6 @@
-#%tensorflow_version 1.x
 # (1)1-1/R
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 x = [1]
 y = [1]

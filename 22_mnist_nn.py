@@ -1,5 +1,7 @@
 # (N) 784b-256-256-10S/C(10)
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+
 import random
 # import matplotlib.pyplot as plt
 
