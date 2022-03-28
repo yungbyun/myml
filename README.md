@@ -4,7 +4,8 @@
 %tensorflow_version 1.x
 ```
 
-## To mount Google drive in Google Colab (프로그램에서 구글 드라이브에 있는 데이터를 접근하기 위한 코드)
+## To mount Google drive in Google Colab 
+#### 프로그램에서 구글 드라이브에 있는 데이터를 접근하기 위한 코드
 ```python
 from google.colab import drive
 drive.mount('/gdrive')
