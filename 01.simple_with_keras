@@ -1,0 +1,22 @@
+from tensorflow.keras.optimizers import Adam
+from keras.models import Sequential
+from keras.layers import Dense
+
+# 데이터
+X = [1]
+y = [1]
+
+# 1개의 신경세포
+gildong = Sequential()
+neuron = Dense(1, input_dim=1, activation='linear')
+gildong.add(neuron)
+
+# 모델 컴파일
+gildong.compile(optimizer=Adam(learning_rate=0.02), loss='mse')
+
+# 학습
+gildong.fit(X, y, epochs=100, verbose=0)
+
+# 예측/테스트
+answer = gildong.predict(X)
+print(f"Prediction: {answer}")
