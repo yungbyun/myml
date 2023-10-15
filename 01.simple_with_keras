@@ -8,7 +8,7 @@ y = [1, 2, 3]
 
 # 1개의 신경세포
 gildong = Sequential()
-gildong.add(Dense(1, input_dim=1, activation='linear'))
+gildong.add(Dense(1, input_dim=1, activation='linear')) #출력뉴런 수, 입력 수, 활성화 함수
 
 # 모델 컴파일
 gildong.compile(optimizer=SGD(learning_rate=0.03), loss='mse')
