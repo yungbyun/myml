@@ -1,5 +1,5 @@
 ## a_simple_neuron_with_Keras @ Kaggle
->* https://www.kaggle.com/code/yungbyun/a-simple-neuron-with-keras?scriptVersionId=146661775
+> https://www.kaggle.com/code/yungbyun/a-simple-neuron-with-keras?scriptVersionId=146661775
 
 ## To use 1.x version of Tensorflow in Google Colab
 ```python
