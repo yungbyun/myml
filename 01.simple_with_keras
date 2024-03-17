@@ -1,10 +1,11 @@
+import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
 from tensorflow.keras.optimizers import SGD
 
 # 데이터
-X = [1, 2, 3]
-y = [1, 2, 3]
+X = np.array([1, 2, 3])
+y = np.array([1, 2, 3])
 
 # 1개의 신경세포
 gildong = Sequential()
@@ -14,8 +15,15 @@ gildong.add(Dense(1, input_dim=1, activation='linear')) #출력뉴런 수, 입�
 gildong.compile(optimizer=SGD(learning_rate=0.03), loss='mse')
 
 # 학습
-gildong.fit(X, y, epochs=500, verbose=1)
+history = gildong.fit(X, y, epochs=30, verbose=1)
 
 # 예측/테스트
-answer = gildong.predict([4, 5, 6])
+answer = gildong.predict(np.array([4, 5, 6]))
 print(f"Prediction: {answer}")
+
+# display an error graph
+import matplotlib.pyplot as plt
+plt.plot(history.history['loss'])
+plt.xlabel('Epoch')
+plt.ylabel('Squared Error')
+plt.show()
